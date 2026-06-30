@@ -1,0 +1,27 @@
+#!/bin/bash
+
+DEST=/mnt/shared
+mkdir -p "$DEST"
+
+FILE="$DEST/shot_$(date +%F_%H-%M-%S).png"
+
+cleanup() {
+    rm -f "$FILE"
+    echo "Cancelado, archivo eliminado"
+    exit 0
+}
+
+# detectar Ctrl+C
+trap cleanup SIGINT
+
+# tomar screenshot con selección
+scrot -s "$FILE"
+
+echo "Enviado: $FILE"
+
+# espera uno segundos
+sleep 20
+
+# borrar después del tiempo
+rm -f "$FILE"
+echo "Auto eliminado"

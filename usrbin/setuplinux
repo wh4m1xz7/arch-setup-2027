@@ -1,0 +1,8 @@
+#!/bin/bash
+
+xrandr --output HDM1 --primary --auto --output eDP-1 --off
+xrandr --output HDMI --mode 1720x1440
+setxkbmap latam
+feh --bg-fill /home/ruisu/.config/bspwm/rices/emilia/walls/wall-04.webp     
+ bspc monitor -d I II III IV V VI
+
