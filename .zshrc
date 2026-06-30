@@ -114,9 +114,9 @@ PS1='%B%F{blue}%f%b  %B%F{magenta}%n%f%b $(dir_icon)  %B%F{red}%~%f%b${vcs_in
 #  ├─┘│  │ ││ ┬││││└─┐
 #  ┴  ┴─┘└─┘└─┘┴┘└┘└─┘
 #   source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+#source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -165,16 +165,6 @@ alias ll='eza --icons=always --color=always -la'
 
 
 
-sudo-toggle() {
-  if [[ $BUFFER != sudo\ * ]]; then
-    BUFFER="sudo $BUFFER"
-  fi
-  zle end-of-line
-}
-zle -N sudo-toggle
-bindkey "^[ " sudo-toggle
-
-
 
 
 
@@ -212,4 +202,12 @@ function settarget(){
 cleartarget () {
     rm -f ~/.config/bin/target
 }
+
+# ZSH Sudo
+
+if [ -f /usr/share/zsh-sudo/sudo.plugin.zsh ]; then
+    source /usr/share/zsh-sudo/sudo.plugin.zsh
+fi
+
+
 
